@@ -10,12 +10,16 @@ import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 
 import userService from './utils/userService';
+import brandService from './utils/brandService';
 
 import './App.css';
 
 class App extends Component {
   state = {
-    user: userService.getUser()
+    user: userService.getUser(),
+    brands: [],
+    addedBrands: [],
+    recentlyAddedBrands: []
   };
 
   handleSignupOrLogin = () => {
@@ -24,8 +28,25 @@ class App extends Component {
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({ user: null, brands: [] });
   };
+
+  handleGetBrands = async () => {
+    if (userService.getUser()) {
+      const { brands } = await brandService.index();
+      this.setState({ brands });
+    }
+  };
+
+  handleGetRecentlyAddedBrands = async () => {
+    const { recentlyAddedBrands } = await brandService.getRecentlyAdded();
+    this.setState({ recentlyAddedBrands });
+  };
+
+  componentDidMount() {
+    this.handleGetRecentlyAddedBrands();
+    this.handleGetBrands();
+  }
 
   render() {
     return (
@@ -33,13 +54,23 @@ class App extends Component {
         <Navbar handleLogout={this.handleLogout} />
         <div className="App-inner-container">
           <Switch>
-            <Route exact path="/" render={props => <Home />} />
             <Route
               exact
-              path="/coffeebrands"
+              path="/"
+              render={props => (
+                <Home recentlyAddedBrands={this.state.recentlyAddedBrands} />
+              )}
+            />
+            <Route
+              exact
+              path="/brands"
               render={props =>
                 userService.getUser() ? (
-                  <CoffeeBrands />
+                  <CoffeeBrands
+                    {...props}
+                    handleGetBrands={this.handleGetBrands}
+                    brands={this.state.brands}
+                  />
                 ) : (
                   <Redirect to="/login" />
                 )
