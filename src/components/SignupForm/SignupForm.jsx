@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './SignupForm.module.css';
+import userService from '../../utils/userService';
 
 class SignupForm extends Component {
   state = this.getInitialState();
@@ -35,7 +36,7 @@ class SignupForm extends Component {
     if (!this.isFormValid()) return;
     try {
       const { name, email, password } = this.state;
-      await //   userService.signup({ name, email, password });
+      await userService.signup({ name, email, password });
       this.setState(this.getInitialState(), () => {
         this.props.handleSignupOrLogin();
         this.props.history.push('/');

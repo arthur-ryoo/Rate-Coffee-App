@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import userService from '../../utils/userService';
 import styles from './LoginForm.module.css';
 
 class LoginForm extends Component {
@@ -7,9 +8,14 @@ class LoginForm extends Component {
   getInitialState() {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: ''
     };
   }
+
+  isFormValid = () => {
+    return this.state.email && this.state.password;
+  };
 
   handleChange = event => {
     this.setState({
@@ -17,32 +23,51 @@ class LoginForm extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    this.setState(this.getInitialState());
+    if (!this.isFormValid()) return;
+    try {
+      const { email, password } = this.state;
+      await userService.login({ email, password });
+      this.setState(this.getInitialState(), () => {
+        this.props.handleSignupOrLogin();
+        this.props.history.push('/');
+      });
+    } catch (error) {
+      this.setState({
+        email: '',
+        password: '',
+        error: error.message
+      });
+    }
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
-        <label>Email</label>
-        <input
-          id="email"
-          name="email"
-          type="text"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          name="password"
-          type="text"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <section className={styles.section}>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="text"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="text"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <button disabled={!this.isFormValid()} type="submit">
+            Login
+          </button>
+        </form>
+      </section>
     );
   }
 }

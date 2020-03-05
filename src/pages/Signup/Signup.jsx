@@ -4,10 +4,10 @@ import styles from './Signup.module.css';
 
 const Signup = props => {
   return (
-    <>
+    <main>
       <h1 className={styles.header}>Sign Up</h1>
-      <SignupForm />
-    </>
+      <SignupForm {...props} handleSignupOrLogin={props.handleSignupOrLogin} />
+    </main>
   );
 };
 
