@@ -15,7 +15,7 @@ app.use(serveFavicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/users', require('./routes/api/users'));
-// app.use('/api/coffeebrands', require('./routes/api/coffeebrands'));
+app.use('/api/brands', require('./routes/api/brands'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
