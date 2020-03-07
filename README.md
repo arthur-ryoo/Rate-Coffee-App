@@ -3,11 +3,11 @@ The Rate Coffee App is a CRUD web application rating coffee brand.
 
 # Screenshots
 
-![](public/images/Image1.png)
+![](public/images/image1.png)
 
-![](public/images/Image2.png)
+![](public/images/image2.png)
 
-![](public/images/Image3.png)
+![](public/images/image3.png)
 
 # Technologies Used
 
