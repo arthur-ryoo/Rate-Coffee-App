@@ -1,0 +1,55 @@
+.div {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem auto;
+  padding: 1rem 1rem 1rem 1rem;
+  width: 45rem;
+  height: 10rem;
+  background-image: url(../../image/mike-kenneally-TD4DBagg2wE-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px;
+  color: white;
+}
+
+.div h1 {
+  font-size: 50px;
+  margin: 0 auto;
+}
+
+.div p {
+  font-size: 25px;
+}
+
+.header {
+  background-image: url(../../image/nordwood-themes-ER4lwoGuEc4-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px;
+  width: 30rem;
+  height: 3rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  padding: 1rem 1rem 1rem 1rem;
+  width: 7.5rem;
+  height: 7.5rem;
+  background-image: url(../../image/mike-kenneally-TD4DBagg2wE-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  color: white;
+}

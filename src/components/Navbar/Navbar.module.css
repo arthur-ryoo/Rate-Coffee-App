@@ -6,6 +6,7 @@
   justify-content: space-evenly;
   color: white;
   box-shadow: 2px 2px 7px 2px lightgray;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .navbar ul {
