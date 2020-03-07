@@ -1,5 +1,5 @@
 # Rate Coffee App
-The Rate Coffee App is a CRUD web application rating coffee brand.
+The Rate Coffee App is a MERN web application rating coffee brand.
 
 # Screenshots
 
