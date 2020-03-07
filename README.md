@@ -18,7 +18,7 @@ The Rate Coffee App is a CRUD web application rating coffee brand.
 # [Getting Started](http://rate-coffee-app.herokuapp.com/)
 
 1. Sign up with your credentials.
-1. Go to Coffee Brands and click Add Brand botton.
+1. Go to Coffee Brands and click Add Brand button.
 1. Click the brand card.
 1. Click Rate Brand button and submit your review.
 
