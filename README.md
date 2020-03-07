@@ -1,5 +1,13 @@
-# Course Attendance App
-The Rate Coffee App is a CRUD web application rating coffee brand.
+# Rate Coffee App
+The Rate Coffee App is a MERN web application rating coffee brand.
+
+# Screenshots
+
+![](public/images/image1.png)
+
+![](public/images/image2.png)
+
+![](public/images/image3.png)
 
 # Technologies Used
 
@@ -10,8 +18,9 @@ The Rate Coffee App is a CRUD web application rating coffee brand.
 # [Getting Started](http://rate-coffee-app.herokuapp.com/)
 
 1. Sign up with your credentials.
-1. Go to Coffee Brands and click Add Brand botton.
-1. Click the brand card.
+1. Go to Coffee Brands and click Add Brand button.
+1. Create brand with name and description.
+1. Click the brand card you created.
 1. Click Rate Brand button and submit your review.
 
 # Next Steps
