@@ -24,13 +24,14 @@
   display: inline-flex;
   font-size: 25px;
   margin-right: 15px;
+  margin-bottom: -5px;
 }
 
 .div small {
   display: flex;
   flex-direction: column;
   font-size: 25px;
-  margin-bottom: 25px;
+  margin: 25px 25px 0 0;
 }
 
 .header {
