@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import CoffeeBrands from './pages/CoffeeBrands/CoffeeBrands';
+import Detail from './pages/BrandDetail/BrandDetail';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 
@@ -11,6 +12,7 @@ import Navbar from './components/Navbar/Navbar';
 
 import userService from './utils/userService';
 import brandService from './utils/brandService';
+import reviewService from './utils/reviewService';
 
 import './App.css';
 
@@ -19,7 +21,8 @@ class App extends Component {
     user: userService.getUser(),
     brands: [],
     addedBrands: [],
-    recentlyAddedBrands: []
+    recentlyAddedBrands: [],
+    reviews: []
   };
 
   handleSignupOrLogin = () => {
@@ -43,9 +46,17 @@ class App extends Component {
     this.setState({ recentlyAddedBrands });
   };
 
+  handleGetReviews = async () => {
+    if (userService.getUser()) {
+      const { reviews } = await reviewService.index();
+      this.setState({ reviews });
+    }
+  };
+
   componentDidMount() {
     this.handleGetRecentlyAddedBrands();
     this.handleGetBrands();
+    this.handleGetReviews();
   }
 
   render() {
@@ -59,6 +70,19 @@ class App extends Component {
               path="/"
               render={props => (
                 <Home recentlyAddedBrands={this.state.recentlyAddedBrands} />
+              )}
+            />
+            <Route
+              exact
+              path="/details/:id"
+              render={props => (
+                <Detail
+                  {...props}
+                  handleGetBrands={this.handleGetBrands}
+                  brands={this.state.brands}
+                  handleGetReviews={this.handleGetReviews}
+                  reviews={this.state.reviews}
+                />
               )}
             />
             <Route
