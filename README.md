@@ -19,7 +19,8 @@ The Rate Coffee App is a MERN web application rating coffee brand.
 
 1. Sign up with your credentials.
 1. Go to Coffee Brands and click Add Brand button.
-1. Click the brand card.
+1. Create brand with name and description.
+1. Click the brand card you created.
 1. Click Rate Brand button and submit your review.
 
 # Next Steps
