@@ -1,5 +1,13 @@
-# Course Attendance App
+# Rate Coffee App
 The Rate Coffee App is a CRUD web application rating coffee brand.
+
+# Screenshots
+
+![](public/images/Image1.png)
+
+![](public/images/Image2.png)
+
+![](public/images/Image3.png)
 
 # Technologies Used
 
