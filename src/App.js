@@ -53,6 +53,13 @@ class App extends Component {
     }
   };
 
+  handleDeleteReviews = async id => {
+    if (userService.getUser()) {
+      const { reviews } = await reviewService.deleteReview(id);
+      this.setState({ reviews });
+    }
+  };
+
   componentDidMount() {
     this.handleGetRecentlyAddedBrands();
     this.handleGetBrands();
@@ -82,6 +89,7 @@ class App extends Component {
                   brands={this.state.brands}
                   handleGetReviews={this.handleGetReviews}
                   reviews={this.state.reviews}
+                  handleDeleteReviews={this.handleDeleteReviews}
                 />
               )}
             />
