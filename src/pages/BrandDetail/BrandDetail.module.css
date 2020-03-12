@@ -53,3 +53,28 @@
   font-size: 1.5rem;
   color: white;
 }
+
+.modal {
+  margin: 17.5rem 17.5rem 17.5rem 17.5rem;
+  width: 20rem;
+  height: 21rem;
+  position: absolute;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+  outline: none;
+  padding: 20px;
+}
+
+.modalCloseButton {
+  width: 300px;
+  height: 50px;
+  margin: 45px;
+  background-color: brown;
+  border-radius: 15px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
