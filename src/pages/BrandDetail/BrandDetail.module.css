@@ -54,6 +54,9 @@
   color: white;
 }
 
+.loadingMessage {
+  text-align: center;
+}
 .modal {
   margin: 17.5rem 17.5rem 17.5rem 17.5rem;
   width: 20rem;
