@@ -26,6 +26,7 @@ async function index(req, res) {
     const brands = await Brand.find({}).sort('-createdAt');
     res.json({ brands });
   } catch (error) {
+    console.log(error);
     res.status(401).json({ err: 'unauthorized' });
   }
 }
