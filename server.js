@@ -22,9 +22,6 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-require('dotenv').config();
-require('./config/database');
-
 const port = process.env.PORT || 3001;
 
 app.listen(port, function() {
