@@ -36,8 +36,12 @@ class App extends Component {
 
   handleGetBrands = async () => {
     if (userService.getUser()) {
-      const { brands } = await brandService.index();
-      this.setState({ brands });
+      try {
+        const { brands } = await brandService.index();
+        this.setState({ brands });
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   };
 
@@ -85,7 +89,6 @@ class App extends Component {
               render={props => (
                 <Detail
                   {...props}
-                  handleGetBrands={this.handleGetBrands}
                   brands={this.state.brands}
                   handleGetReviews={this.handleGetReviews}
                   reviews={this.state.reviews}
