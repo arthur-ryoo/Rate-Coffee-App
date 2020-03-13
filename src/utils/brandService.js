@@ -1,6 +1,6 @@
 import tokenService from './tokenService';
 
-const BASE_URL = './api/brands/';
+const BASE_URL = '/api/brands/';
 
 function create(data) {
   return fetch(BASE_URL, {
