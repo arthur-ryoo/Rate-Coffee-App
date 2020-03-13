@@ -9,24 +9,26 @@ Modal.setAppElement('#root');
 
 const Detail = props => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  console.log(props.brands);
   return (
     <main>
       <div className={styles.header}>
         <h1>Brand Detail</h1>
       </div>
-
-      <div className={styles.div}>
-        <h1>
-          {props.brands.filter(b => b._id === props.match.params.id)[0].name}
-        </h1>
-        <p>
-          {
-            props.brands.filter(b => b._id === props.match.params.id)[0]
-              .description
-          }
-        </p>
-      </div>
+      {props.brands.length > 0 ? (
+        <div className={styles.div}>
+          <h1>
+            {props.brands.filter(b => b._id === props.match.params.id)[0].name}
+          </h1>
+          <p>
+            {
+              props.brands.filter(b => b._id === props.match.params.id)[0]
+                .description
+            }
+          </p>
+        </div>
+      ) : (
+        <h1 className={styles.loadingMessage}>...Loading</h1>
+      )}
       <Review {...props} />
 
       <button className={styles.button} onClick={() => setModalIsOpen(true)}>
