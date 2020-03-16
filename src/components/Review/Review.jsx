@@ -16,45 +16,51 @@ const Review = props => {
       </div>
       <div className={styles.div}>
         {props.reviews ? (
-          props.reviews.map(({ taste, price, comment, addedBy, _id }) => (
-            <section className={styles.section} key={_id}>
-              <h1>{addedBy.name}</h1>
-              <p>Taste - {taste}</p>
-              <p>Price - {price}</p>
-              <small>{comment}</small>
-              <div className={styles.buttonContainer}>
-                <button
-                  className={styles.button}
-                  onClick={() => setModalIsOpen(true)}
-                >
-                  Edit
-                </button>
-                <Modal
-                  className={styles.modal}
-                  isOpen={modalIsOpen}
-                  onRequestClose={() => setModalIsOpen(false)}
-                >
-                  <EditReviewForm {...props} />
-                  <div>
-                    <button
-                      className={styles.modalCloseButton}
-                      onClick={() => setModalIsOpen(false)}
-                    >
-                      Close
-                    </button>
-                  </div>
-                </Modal>
+          props.reviews
+            .filter(r => r.brandId === props.match.params.id)
+            .map(({ taste, price, comment, addedBy, _id }) => (
+              <section className={styles.section} key={_id}>
+                <h1>{addedBy.name}</h1>
+                <p>Taste - {taste}</p>
+                <p>Price - {price}</p>
+                <small>{comment}</small>
+                <div className={styles.buttonContainer}>
+                  <button
+                    className={styles.button}
+                    onClick={() => setModalIsOpen(true)}
+                  >
+                    Edit
+                  </button>
+                  <Modal
+                    className={styles.modal}
+                    isOpen={modalIsOpen}
+                    onRequestClose={() => setModalIsOpen(false)}
+                  >
+                    <EditReviewForm
+                      reviewId={_id}
+                      review={addedBy}
+                      {...props}
+                    />
+                    <div>
+                      <button
+                        className={styles.modalCloseButton}
+                        onClick={() => setModalIsOpen(false)}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Modal>
 
-                <button
-                  className={styles.button}
-                  onClick={() => props.handleDeleteReviews(_id)}
-                  type="submit"
-                >
-                  Delete
-                </button>
-              </div>
-            </section>
-          ))
+                  <button
+                    className={styles.button}
+                    onClick={() => props.handleDeleteReviews(_id)}
+                    type="submit"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </section>
+            ))
         ) : (
           <h1>...loading</h1>
         )}
