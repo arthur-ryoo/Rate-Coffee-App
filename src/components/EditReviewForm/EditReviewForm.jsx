@@ -19,8 +19,8 @@ class EditReviewForm extends Component {
       taste: null,
       price: null,
       comment: '',
-      brandId: this.props.match.params.id,
-      error: ''
+      error: '',
+      reviewid: this.props.reviewId
     };
   }
 
@@ -40,8 +40,15 @@ class EditReviewForm extends Component {
     if (!this.isFormValid()) return;
     try {
       const { taste, price, comment, brandId } = this.state;
+      const id = this.state.reviewid;
       const addedBy = userService.getUser()._id;
-      await reviewService.create({ taste, price, comment, brandId, addedBy });
+      await reviewService.editReview(id, {
+        taste,
+        price,
+        comment,
+        brandId,
+        addedBy
+      });
       this.setState(this.getInitialState(), () => {
         this.props.handleGetReviews();
         this.props.history.push(this.props.location.pathname);
