@@ -25,6 +25,5 @@ The Rate Coffee App is a MERN web application rating coffee brand.
 
 # Next Steps
 
-* A user should be able to click on an individual coffee brand and update and delete a comment.
 * A user should be able to use a fully functional rating system.
 * A user should be able to see each brand image on brand card.
