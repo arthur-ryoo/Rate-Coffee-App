@@ -2,6 +2,32 @@ import React, { Component } from 'react';
 import userService from '../../utils/userService';
 import styles from './LoginForm.module.css';
 
+import Button from '@material-ui/core/Button';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+import classes from './LoginForm.module.css';
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 class LoginForm extends Component {
   state = this.getInitialState();
 
@@ -9,7 +35,7 @@ class LoginForm extends Component {
     return {
       email: '',
       password: '',
-      error: ''
+      error: '',
     };
   }
 
@@ -17,13 +43,13 @@ class LoginForm extends Component {
     return this.state.email && this.state.password;
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     if (!this.isFormValid()) return;
     try {
@@ -37,7 +63,7 @@ class LoginForm extends Component {
       this.setState({
         email: '',
         password: '',
-        error: error.message
+        error: error.message,
       });
     }
   };
@@ -63,9 +89,15 @@ class LoginForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button disabled={!this.isFormValid()} type="submit">
+          <Button
+            disabled={!this.isFormValid()}
+            type="submit"
+            fullWidth
+            variant="contained"
+            className={classes.submit}
+          >
             Login
-          </button>
+          </Button>
         </form>
       </section>
     );
