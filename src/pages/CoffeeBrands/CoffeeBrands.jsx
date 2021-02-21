@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -9,6 +9,11 @@ Modal.setAppElement('#root');
 
 const Brands = props => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    props.handleGetBrands();
+  }, []);
+
   return (
     <main>
       <div className={styles.header}>
